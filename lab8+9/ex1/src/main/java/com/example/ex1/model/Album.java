@@ -1,5 +1,7 @@
 package com.example.ex1.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +20,11 @@ public class Album {
 
     @ManyToOne
     @JoinColumn(name = "artist_id")
+//    @JsonIgnore
     private Artist artist;
 
     @ManyToMany(mappedBy = "albumList")
+    @JsonIgnore
     private List<Shop> shops = new ArrayList<>();
 
     public Album() {

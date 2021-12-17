@@ -1,5 +1,7 @@
 package com.example.ex1.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ public class Artist {
     private String artistName;
 
     @OneToMany(mappedBy = "artist")
+    @JsonIgnore
     private List<Album> albumList = new ArrayList<>();
 
     public Artist() {

@@ -8,6 +8,7 @@ import com.example.ex1.repository.AlbumDetailsRepository;
 import com.example.ex1.repository.AlbumRepository;
 import com.example.ex1.repository.ArtistRepository;
 import com.example.ex1.repository.ShopRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,17 +34,15 @@ public class Ex1Application implements CommandLineRunner {
      *      -bidirectional
      *
      */
-    private final AlbumDetailsRepository albumDetailsRepository;
-    private final AlbumRepository albumRepository;
-    private final ArtistRepository artistRepository;
-    private final ShopRepository shopRepository;
+    @Autowired
+    private AlbumDetailsRepository albumDetailsRepository;
+    @Autowired
+    private  AlbumRepository albumRepository;
+    @Autowired
+    private  ArtistRepository artistRepository;
+    @Autowired
+    private  ShopRepository shopRepository;
 
-    private Ex1Application(AlbumDetailsRepository albumDetailsRepository, AlbumRepository albumRepository, ArtistRepository artistRepository, ShopRepository shopRepository){
-        this.albumDetailsRepository = albumDetailsRepository;
-        this.albumRepository = albumRepository;
-        this.artistRepository = artistRepository;
-        this.shopRepository = shopRepository;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(Ex1Application.class, args);
@@ -78,8 +77,6 @@ public class Ex1Application implements CommandLineRunner {
         Shop shop = new Shop("Bucuresti sector 3");
         shop.setAlbumList(Arrays.asList(album1,album2));
         shopRepository.save(shop);
-
-
 
     }
 }
